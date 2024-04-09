@@ -20,10 +20,10 @@ const handleForm = function (e) {
 
 const handleResetBtn = function () {
   const name = localStorage.getItem(NAME_KEY)
+  const hasAccepted = confirm("Vuoi davvero resettare?")
 
-  if (name) {
+  if (name && hasAccepted) {
     localStorage.removeItem(NAME_KEY, name)
-
     label.innerText = "Inserisci un nuovo nome:"
   }
 }
@@ -32,8 +32,8 @@ const handleTimer = function () {
   const counterText = document.getElementById("counterText")
   sessionStorage.setItem(SECOND_KEY, seconds)
 
-  counterText.innerText = seconds
   seconds++
+  counterText.innerText = seconds
 }
 
 const handleStart = function () {
